@@ -1,0 +1,28 @@
+<form [formGroup]="userRegistrationForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" formControlName="name">
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" formControlName="email">
+    </div>
+    <div class="mb-3">
+        <label for="mobile" class="form-label">Mobile No.</label>
+        <input type="tel" class="form-control" id="phoneno" formControlName="phoneno">
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="text" class="form-control" id="password" formControlName="password">
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Confirm Password</label>
+        <input type="text" class="form-control" id="cpassword" formControlName="cpassword">
+    </div>
+    <button type="submit" class="btn btn-success" >
+        Save
+    </button>
+    &nbsp;
+    <span class="pl-4 pr-4">Or</span>&nbsp;
+    <a routerLink="/login" class="text-decoration-none cursor-pointer">Already User</a>
+</form>

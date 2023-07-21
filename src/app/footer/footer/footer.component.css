@@ -1,0 +1,12 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Place the footer at the bottom of the page */
+  .footer {
+    background-color: #f8f9fa;
+    padding: 20px;
+    margin-top: auto;
+  }

@@ -1,0 +1,14 @@
+<form class="pt-3 pb-3 justify-content-center" #authForm ="ngForm" (ngSubmit)="onSubmit(authForm)">
+    <div class="row-mb-3 col-6">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name= "email" ngModel required email>
+    </div>
+    <div class="row-mb-3 col-6">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" name="password" ngModel required>
+    </div>
+    <a routerLink="/user-registration" class="text-decoration-none cursor-pointer">New User</a>
+    <div class="row-mb-3 col-12 pt-3">
+      <button type="submit" class="btn btn-primary" [disabled]="!authForm.valid">Sign in</button>
+    </div>
+  </form>
