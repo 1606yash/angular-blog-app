@@ -1,0 +1,168 @@
+<div class="mt-2 pt-2 mb-2 pb-2">
+    <mat-card>
+        <mat-card-content>
+            <mat-stepper [linear]="isLinear" #stepper>
+                <mat-step [stepControl]="customerInfo">
+                    <form [formGroup]="customerInfo" >
+                        <ng-template matStepLabel><strong>Customer Details</strong></ng-template>
+                        <div class="row g-3 mt-3 mb-3">
+                            <div class="col">
+                                <label class="form-label asterisk"><b>Customer Name</b></label>
+                                <input type="text" class="form-control" placeholder="Customer Name"
+                                    formControlName="customerName" noNumbers>
+                                    <div>
+                                        <small *ngIf="customerInfo.get('customerName')?.touched && customerInfo.get('customerName')?.errors?.['required']"><i class="fa fa-info-circle"></i>&nbsp;Customer Name field is required. </small>
+                                    </div>
+                            </div>
+                            <div class="col">
+                                <label class="form-label asterisk"><b>Contact Number</b></label>
+                                <input type="text" class="form-control" placeholder="XXX-XXX-XXXX"
+                                    formControlName="contactno" phoneFormat>
+                                    <div>
+                                        <small *ngIf="customerInfo.get('contactno')?.touched && customerInfo.get('contactno')?.errors?.['required']"><i class="fa fa-info-circle"></i>&nbsp;Contact Number field is required. </small>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="row g-3 mb-2">
+                            <div class="col">
+                                <label class="form-label asterisk"><b>Address</b></label>
+                                <input type="text" class="form-control" placeholder="Address"
+                                    formControlName="address">
+                                    <div>
+                                        <small *ngIf="customerInfo.get('address')?.touched && customerInfo.get('address')?.errors?.['required']"><i class="fa fa-info-circle"></i>&nbsp;Address field is required. </small>
+                                    </div>
+                            </div>
+                            <div class="col">
+                                <label class="form-label asterisk"><b>City</b></label>
+                                <input type="tel" class="form-control" placeholder="City" formControlName="city" noNumbers>
+                                <div>
+                                    <small *ngIf="customerInfo.get('city')?.touched && customerInfo.get('city')?.errors?.['required']"><i class="fa fa-info-circle"></i>&nbsp;City field is required. </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-3 mb-2">
+                            <div class="col">
+                                <label class="form-label asterisk"><b>State</b></label>
+                                <input type="text" class="form-control" placeholder="State" formControlName="state" noNumbers>
+                                <div>
+                                    <small *ngIf="customerInfo.get('state')?.touched && customerInfo.get('state')?.errors?.['required']"><i class="fa fa-info-circle"></i>&nbsp;State field is required. </small>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label class="form-label asterisk"><b>Country</b></label>
+                                <input type="text" class="form-control" placeholder="Country" formControlName="country" noNumbers>
+                                <div>
+                                    <small *ngIf="customerInfo.get('country')?.touched && customerInfo.get('country')?.errors?.['required']"><i class="fa fa-info-circle"></i>&nbsp;Country field is required. </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-3 mb-3">
+                            <div class="col">
+                                <label class="form-label asterisk"><b>Zip Code</b></label>
+                                <input type="tel" class="form-control" placeholder="XXXXX" formControlName="zipcode" zipCodeFormat>
+                                <div>
+                                    <small *ngIf="customerInfo.get('zipcode')?.touched && customerInfo.get('zipcode')?.errors?.['required']"><i class="fa fa-info-circle"></i>&nbsp;Zip Code field is required. </small>
+                                </div>
+                            </div>
+                            <div class="col">
+                            </div>
+                        </div>
+                        <div>
+                            <button mat-raised-button matStepperNext color="primary" [disabled]="!customerInfo.valid">Next</button>
+                        </div>
+                    </form>
+                </mat-step>
+                <mat-step [stepControl]="carInfo">
+                    <ng-template matStepLabel><strong>Car Details</strong></ng-template>
+                    <form [formGroup]="carInfo">
+                        <div class="row g-3 mt-3 mb-3">
+                            <div class="col">
+                                <label class="form-label asterisk"><b>Car Model Name</b></label>
+                                <input type="text" class="form-control" placeholder="Car Model Name"
+                                    formControlName="modelname">
+                                    <div>
+                                        <small *ngIf="carInfo.get('modelname')?.touched && carInfo.get('modelname')?.errors?.['required']"><i class="fa fa-info-circle"></i>&nbsp;Car Model Name field is required. </small>
+                                    </div>
+                            </div>
+                            <div class="col">
+                                <label class="form-label asterisk"><b>Insurance Policy Name</b></label>
+                                <input type="text" class="form-control" placeholder="Insurance Policy Name"
+                                    formControlName="insurancename">
+                                    <div>
+                                        <small *ngIf="carInfo.get('insurancename')?.touched && carInfo.get('insurancename')?.errors?.['required']"><i class="fa fa-info-circle"></i>&nbsp;Insurance Policy Name field is required. </small>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="row g-3 mb-2">
+                            <div class="col">
+                                <label class="form-label asterisk"><b>Insurance Expiry Date</b></label>
+                                <input type="date" class="form-control" placeholder="Insurance Expiry Date"
+                                    formControlName="insurancexpdate">
+                                    <div>
+                                        <small *ngIf="carInfo.get('insurancexpdate')?.touched && carInfo.get('insurancexpdate')?.errors?.['required']"><i class="fa fa-info-circle"></i>&nbsp;Insurance Expiry Date field is required. </small>
+                                    </div>
+                            </div>
+                            <div class="col">
+                                <label class="form-label asterisk"><b>Color</b></label>
+                                <input type="text" class="form-control" placeholder="Color" formControlName="color" noNumbers>
+                                <div>
+                                    <small *ngIf="carInfo.get('color')?.touched && carInfo.get('color')?.errors?.['required']"><i class="fa fa-info-circle"></i>&nbsp;Color field is required. </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-3 mb-2">
+                            <div class="col">
+                                <label class="form-label asterisk"><b>Images</b></label>
+                                <input class="form-control" type="file" id="formFileMultiple" (change)="onFileChange($event)">
+                                <div>
+                                    <small *ngIf="carInfo.get('Images')?.touched && carInfo.get('Images')?.errors?.['required']"><i class="fa fa-info-circle"></i>&nbsp;Images field is required. </small>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label class="form-label asterisk"><b>Purchase Date</b></label>
+                                <input type="date" class="form-control" placeholder="Purchase Date"
+                                    formControlName="purchaseDate">
+                                    <div>
+                                        <small *ngIf="carInfo.get('purchaseDate')?.touched && carInfo.get('purchaseDate')?.errors?.['required']"><i class="fa fa-info-circle"></i>&nbsp;Purchase Date field is required. </small>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="row g-3 mb-2">
+                            <div class="col">
+                                <label class="form-label asterisk"><b>Selling Amount</b></label>
+                                <input type="text" class="form-control" placeholder="Enter Amount"
+                                    formControlName="sellingPrice">
+                                    <div>
+                                        <small *ngIf="carInfo.get('sellingPrice')?.touched && carInfo.get('sellingPrice')?.errors?.['required']"><i class="fa fa-info-circle"></i>&nbsp;Selling Amount field is required. </small>
+                                    </div>
+                            </div>
+                            <div class="col">
+                                <!-- <label class="form-label asterisk">Color</label>
+                                <input type="text" class="form-control" placeholder="Color" formControlName="color"> -->
+                            </div>
+                        </div>
+                        <div class="form-floating mt-2 mb-2">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                                style="height: 100px" formControlName="comments"></textarea>
+                            <label for="floatingTextarea2"><b>Comments</b></label>
+                            
+                        </div>
+                        <div>
+                            <button mat-raised-button matStepperPrevious color="primary">Back</button>&nbsp;
+                            <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!customerInfo.valid && !carInfo.valid">Submit</button>&nbsp;
+                            <button mat-raised-button (click)="stepper.reset()" color="warn">Reset</button>
+                        </div>
+                    </form>
+                </mat-step>
+                <!-- <mat-step>
+                    <ng-template matStepLabel>Done</ng-template>
+                    <p>You are now done.</p>
+                    <div>
+                        <button mat-raised-button matStepperPrevious color="primary">Back</button>&nbsp;
+                        <button mat-raised-button (click)="stepper.reset()" color="primary">Reset</button>
+                    </div>
+                </mat-step> -->
+            </mat-stepper>
+        </mat-card-content>
+    </mat-card>
+</div>
