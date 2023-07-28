@@ -1,14 +1,20 @@
-<form class="pt-3 pb-3 justify-content-center" #authForm ="ngForm" (ngSubmit)="onSubmit(authForm)">
-    <div class="row-mb-3 col-6">
-      <label for="email" class="form-label">Email</label>
-      <input type="email" class="form-control" id="email" name= "email" ngModel required email>
-    </div>
-    <div class="row-mb-3 col-6">
-      <label for="password" class="form-label">Password</label>
-      <input type="password" class="form-control" id="password" name="password" ngModel required>
-    </div>
-    <a routerLink="/user-registration" class="text-decoration-none cursor-pointer">New User</a>
-    <div class="row-mb-3 col-12 pt-3">
-      <button type="submit" class="btn btn-primary" [disabled]="!authForm.valid">Sign in</button>
-    </div>
-  </form>
+<div class="mt-2 pt-2 mb-2 pb-2">
+  <mat-card>
+    <mat-card-content>
+      <form class="pt-3 pb-3 justify-content-center" [formGroup]="authForm" (ngSubmit)="onSubmit()">
+        <div class="row-mb-3 col-6">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" formControlName="email" required email>
+        </div>
+        <div class="row-mb-3 col-6">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" formControlName="password" required>
+        </div>
+        <div class="row-mb-3 col-12 pt-3">
+          <button type="submit" mat-raised-button color="primary">Sign In</button>&nbsp;
+          <a routerLink="/user-registration" class="text-decoration-none cursor-pointer" mat-raised-button color="primary">Back to Registration</a>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
