@@ -2,3 +2,19 @@
     background-color: blue;
     color:white;
 }
+.container-fluid{
+    background-color: black;
+    color: aliceblue;
+}
+.navbar-brand img {
+    height: 50px; /* Adjust the height to your desired size */
+    width: 80px;
+  }
+
+  .nav-link{
+    color: aliceblue;
+  }
+  .navbar-nav .nav-link.active, .navbar-nav .nav-link.show{
+    color: aliceblue;
+  }
+  

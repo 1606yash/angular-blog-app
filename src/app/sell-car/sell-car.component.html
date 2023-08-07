@@ -33,26 +33,39 @@
                                     </div>
                             </div>
                             <div class="col">
-                                <label class="form-label asterisk"><b>City</b></label>
-                                <input type="tel" class="form-control" placeholder="City" formControlName="city" noNumbers>
+                                <label class="form-label asterisk"><b>Country</b></label>
+                                <select name="country" class="form-control" formControlName="country" (change)="onCountrySelected($event)">
+                                    <option selected disabled>-- Select --</option>
+                                    <option *ngFor="let country of countryList" [value]="country.id">{{country.name}}</option>
+                                </select>
                                 <div>
-                                    <small *ngIf="customerInfo.get('city')?.touched && customerInfo.get('city')?.errors?.['required']"><i class="fa fa-info-circle"></i>&nbsp;City field is required. </small>
+                                    <small *ngIf="customerInfo.get('country')?.touched && customerInfo.get('country')?.errors?.['required']"><i class="fa fa-info-circle"></i>&nbsp;Country field is required. </small>
                                 </div>
                             </div>
+
+                            
                         </div>
                         <div class="row g-3 mb-2">
                             <div class="col">
                                 <label class="form-label asterisk"><b>State</b></label>
-                                <input type="text" class="form-control" placeholder="State" formControlName="state" noNumbers>
+                                <select name="state" class="form-control" formControlName="state" (change)="onStateSelected($event)">
+                                    <option selected disabled>-- Select --</option>
+                                    <option *ngFor="let state of stateList" [value]="state.id">{{state.name}}</option>
+                                </select>
+                                <!-- <input type="text" class="form-control" placeholder="State" formControlName="state" noNumbers> -->
                                 <div>
                                     <small *ngIf="customerInfo.get('state')?.touched && customerInfo.get('state')?.errors?.['required']"><i class="fa fa-info-circle"></i>&nbsp;State field is required. </small>
                                 </div>
                             </div>
                             <div class="col">
-                                <label class="form-label asterisk"><b>Country</b></label>
-                                <input type="text" class="form-control" placeholder="Country" formControlName="country" noNumbers>
+                                <label class="form-label asterisk"><b>City</b></label>
+                                <select name="city" class="form-control" formControlName="city" >
+                                    <option selected disabled>-- Select --</option>
+                                    <option *ngFor="let city of cityList" [value]="city.id">{{city.city}}</option>
+                                </select>
+                                <!-- <input type="text" class="form-control" placeholder="City" formControlName="city" noNumbers> -->
                                 <div>
-                                    <small *ngIf="customerInfo.get('country')?.touched && customerInfo.get('country')?.errors?.['required']"><i class="fa fa-info-circle"></i>&nbsp;Country field is required. </small>
+                                    <small *ngIf="customerInfo.get('city')?.touched && customerInfo.get('city')?.errors?.['required']"><i class="fa fa-info-circle"></i>&nbsp;City field is required. </small>
                                 </div>
                             </div>
                         </div>
@@ -68,7 +81,7 @@
                             </div>
                         </div>
                         <div>
-                            <button mat-raised-button matStepperNext color="primary" [disabled]="!customerInfo.valid">Next</button>
+                            <button mat-raised-button matStepperNext color="primary" >Next</button>
                         </div>
                     </form>
                 </mat-step>
@@ -146,6 +159,10 @@
                                 style="height: 100px" formControlName="comments"></textarea>
                             <label for="floatingTextarea2"><b>Comments</b></label>
                             
+                        </div>
+                        <div class="mt-2 mb-2 pt-2 pb-2">
+
+                            <a class="text-decoration-none cursor-pointer color-blue" (click)="openDialog()">Terms & Conditions</a>
                         </div>
                         <div>
                             <button mat-raised-button matStepperPrevious color="primary">Back</button>&nbsp;
