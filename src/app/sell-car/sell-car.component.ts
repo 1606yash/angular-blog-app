@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CarService } from '../car.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { SharedService } from '../shared.service';
+
 
 @Component({
   selector: 'app-sell-car',
@@ -12,12 +14,20 @@ import { ToastrService } from 'ngx-toastr';
 export class SellCarComponent implements OnInit {
   customerInfo!: FormGroup;
   carInfo!: FormGroup;
+  countryList: any;
+  stateList:any;
+  cityList:any;
 
   isLinear = false;
 
-  constructor(private carService: CarService, private router: Router, private route: ActivatedRoute, private toastr: ToastrService) { }
+  constructor(private carService: CarService, private router: Router, private route: ActivatedRoute, private toastr: ToastrService, private sharedService: SharedService) { }
 
   ngOnInit() {
+
+    this.sharedService.getCountryList().subscribe((data:any)=>{
+      this.countryList = Object.keys(data).map((id) => ({ id: parseInt(id), name: data[id] }));
+    })
+
     this.customerInfo = new FormGroup({
       customerName: new FormControl('', Validators.required),
       contactno: new FormControl('', Validators.required),
@@ -42,13 +52,30 @@ export class SellCarComponent implements OnInit {
   }
 
   onFileChange(event: any) {
-
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.carInfo.patchValue({
         images: file
       });
     }
+  }
+
+  onCountrySelected(event: any ) {
+    const selectedCountryId = (event.target).value;
+    this.sharedService.getStateList(selectedCountryId).subscribe((data:any) => {
+      this.stateList = Object.keys(data).map((id) => ({ id: parseInt(id), name: data[id] }))
+    })
+  }
+
+  onStateSelected(event: any ) {
+    const selectedStateId = (event.target).value;
+    this.sharedService.getCityList(selectedStateId).subscribe((data:any) => {
+      this.cityList = Object.keys(data).map((id) => ({ id: parseInt(id), city: data[id] }))
+    })
+  }
+
+  openDialog(){
+
   }
 
   onSubmit() {

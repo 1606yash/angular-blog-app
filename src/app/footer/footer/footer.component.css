@@ -6,7 +6,12 @@ body {
   
   /* Place the footer at the bottom of the page */
   .footer {
-    background-color: #f8f9fa;
+    background-color: black;
+    color: aliceblue;
     padding: 20px;
     margin-top: auto;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
   }

@@ -29,5 +29,9 @@ export class UserService {
   isLoggedIn(){
     return sessionStorage.getItem('token')!= null?sessionStorage.getItem('token')?.toString():'';
   }
+
+  onLogoutUser(token:any){
+    return this.http.post<any>('http://127.0.0.1:8000/api/logout',token);
+  }
   
 }
